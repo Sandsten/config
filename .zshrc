@@ -14,8 +14,8 @@ if [ -d "$HOME/bin" ] ; then
 fi
 
 # Source variables if such a file exist
-VARIABLES = "~/.my-configs/variables"
-if -f $VARIABLES; then
+VARIABLES="~/.my-configs/variables"
+if [ -f $VARIABLES ] ; then
   source $VARIABLES
 fi
 
