@@ -6,23 +6,19 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
 fi
 
 # Load the powerlevel10k theme :)
-source ~/powerlevel10k/powerlevel10k.zsh-theme
+source "$HOME/powerlevel10k/powerlevel10k.zsh-theme"
 
 # set PATH so it includes user's private bin if it exists
 if [ -d "$HOME/bin" ] ; then
     PATH="$HOME/bin:$PATH"
 fi
 
-# Source variables if such a file exist
-VARIABLES="~/.my-configs/variables"
-if [ -f $VARIABLES ] ; then
-  source $VARIABLES
-fi
-
-#ALIASEs
-alias ls="ls --color=auto"
-alias ll="ls -al"
-alias reload="source ~/.zshrc"
+# -r = if file exist and is readable by the current process
+# <.> will do the same trick as <source>
+CONFIG_FOLDER="$HOME/.my-configs"
+if [[ -r "$CONFIG_FOLDER/.aliasrc" ]]; then . "$CONFIG_FOLDER/.aliasrc"; fi
+if [[ -r "$CONFIG_FOLDER/.keybindsrc" ]]; then . "$CONFIG_FOLDER/.keybindsrc"; fi
+if [[ -r "$CONFIG_FOLDER/.variables" ]]; then . "$CONFIG_FOLDER/.variables"; fi
 
 # Suggest download for packages not found
 source "/etc/zsh_command_not_found"
@@ -34,3 +30,21 @@ export NVM_DIR="$HOME/.nvm"
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+# Highlighting
+source "$HOME/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/home/steve/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/home/steve/anaconda3/etc/profile.d/conda.sh" ]; then
+        . "/home/steve/anaconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/home/steve/anaconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
