@@ -1,0 +1,7 @@
+#ALIASEs
+alias ls="ls --color=auto"
+alias l="ls -l"
+alias ll="ls -al"
+alias reload="source ~/.zshrc"
+alias ..="cd .."
+alias ...="cd ../.."

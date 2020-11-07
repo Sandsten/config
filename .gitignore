@@ -4,3 +4,5 @@
 # except these
 !.zshrc
 !.gitignore
+!.my-configs/.keybindsrc
+!.my-configs/.aliasrc

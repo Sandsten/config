@@ -37,7 +37,3 @@ source "$HOME/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
 
 # Suggest download for packages not found
 source "/etc/zsh_command_not_found"
-
-# Fix for jumping words with Ctrl+<left|right>
-bindkey "^[[1;5C" forward-word
-bindkey "^[[1;5D" backward-word

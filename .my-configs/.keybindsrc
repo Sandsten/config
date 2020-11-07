@@ -1,0 +1,8 @@
+#!/bin/zsh
+
+bindkey '^H' backward-kill-word
+bindkey '5~' kill-word
+
+# Fix for jumping words with Ctrl+<left|right>
+bindkey "^[[1;5C" forward-word
+bindkey "^[[1;5D" backward-word
