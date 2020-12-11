@@ -1,13 +1,17 @@
 #ALIASEs
-alias ls="ls --color=auto"
-alias l="ls -l"
-alias ll="ls -al"
+alias l="ls -l --color=auto"
+alias ll="ls -al --color=auto"
+
 alias reload="source ~/.zshrc"
+
 alias ..="cd .."
 alias ...="cd ../.."
+
 alias cc="xclip -selection clipboard"
 alias c="clear"
 
 # List file and folder size at current position
 alias lss="du -h --max-depth=0 *"
 alias lsss="lss | sort -hr"
+
+alias update-calubre="sudo -v && wget -nv -O- https://download.calibre-ebook.com/linux-installer.sh | sudo sh /dev/stdin"

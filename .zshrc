@@ -5,8 +5,16 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
+# History config
+export HISTSIZE=10000
+if [[ ! -r "$CONFIG_FOLDER/.history" ]]; then touch "$CONFIG_FOLDER/.history"; fi
+export HISTFILE="$CONFIG_FOLDER/.history"
+export SAVEHIST="$HISTSIZE"
+
 # set PATH so it includes user's private bin if it exists
 if [ -d "$HOME/bin" ] ; then PATH="$HOME/bin:$PATH"; fi
+# Add julia bin folder to path  
+if [ -d "$PATH:$HOME/julia-1.5.3/bin" ] ; then PATH="$PATH:$HOME/julia-1.5.3/bin"; fi
 
 # -r = if file exist and is readable by the current process
 # <.> will do the same trick as <source>
@@ -33,6 +41,8 @@ zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 
 # Highlighting
 source "$HOME/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
+source "$HOME/.zsh/zsh-256color/zsh-256color.plugin.zsh"
+# source "$HOME/.zsh/zsh-autocomplete/zsh-autocomplete.plugin.zsh"
 
 # Suggest download for packages not found
 source "/etc/zsh_command_not_found"
